@@ -1,0 +1,4 @@
+name: MaxGeilesPlugin
+version: 1.0
+main: packeins.Plugin
+api-version: 1.14
