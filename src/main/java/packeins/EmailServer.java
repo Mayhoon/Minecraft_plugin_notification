@@ -9,11 +9,10 @@ public class EmailServer {
 
     private Message message;
 
-
-    public EmailServer () {
+    public void sendMail(String receiver, String subject, String content) throws MessagingException {
         String sender = "statusBot_mc@gmx.de";
         String password = "server_status";
-        String receiver = "emailmaxhoff@gmx.de";
+//        String receiver = "emailmaxhoff@gmx.de";
 
         Properties properties = new Properties();
 
@@ -37,7 +36,7 @@ public class EmailServer {
                 }
             });
 
-             message = new MimeMessage(mailSession);
+            message = new MimeMessage(mailSession);
             InternetAddress addressTo = new InternetAddress(receiver);
             message.setRecipient(Message.RecipientType.TO, addressTo);
             message.setFrom(new InternetAddress(sender));
@@ -47,9 +46,6 @@ public class EmailServer {
 
         }
 
-    }
-
-    public void sendMail(String  subject, String content) throws MessagingException {
         message.setSubject(subject);
         message.setContent(content, "text/plain");
         Transport.send(message);
